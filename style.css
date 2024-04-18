@@ -7,7 +7,7 @@ body, html {
 }
 
 .hero {
-    background-image: url('images/First-design.webp'); /* Replace with the path to your hero image */
+    background-image: url('First-design.webp'); /* Replace with the path to your hero image */
     background-size: cover;
     background-position: center;
     height: 100vh; /* Full height of the viewport */
