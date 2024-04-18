@@ -1,4 +1,3 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,8 +8,24 @@
 </head>
 <body>
     <div class="hero">
-        <h1 class="title">HERO</h1>
+        <div class="navbar">
+            <button class="nav-button">Home</button>
+            <button class="nav-button">About</button>
+            <button class="nav-button">Games</button>
+            <button class="nav-button">Contact</button>
+            <button class="nav-button" id="change-background">Change Background</button>
+        </div>
+        <h1 class="title">Welcome to NEKOS Game</h1>
         <!-- The subtitle and description can go here, if any. -->
     </div>
+    <script>
+        const backgrounds = ['Third-design.webp', 'First-design.webp', 'Second-design.webp', 'Fourth-design.webp'];
+        let currentBackgroundIndex = 0; // Start with the first image in the array
+        document.body.style.backgroundImage = `url('${backgrounds[currentBackgroundIndex]}')`; // Set initial background
+        document.getElementById('change-background').addEventListener('click', function() {
+            currentBackgroundIndex = (currentBackgroundIndex + 1) % backgrounds.length;
+            document.body.style.backgroundImage = `url('${backgrounds[currentBackgroundIndex]}')`;
+        });
+    </script>
 </body>
 </html>
