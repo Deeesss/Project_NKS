@@ -1,0 +1,25 @@
+/* style.css */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.hero {
+    background-image: url('images/First-design.webp'); /* Replace with the path to your hero image */
+    background-size: cover;
+    background-position: center;
+    height: 100vh; /* Full height of the viewport */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white; /* Or any other color for the text */
+    text-align: center;
+}
+
+.title {
+    font-size: 4rem; /* Adjust size as needed */
+    margin: 0;
+}
