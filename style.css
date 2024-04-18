@@ -1,15 +1,16 @@
-/* style.css */
+/* General body and html styles */
 body, html {
     margin: 0;
     padding: 0;
     height: 100%;
     width: 100%;
-}
-
-.hero {
-    background-image: url('First-design.webp'); /* Replace with the path to your hero image */
     background-size: cover;
     background-position: center;
+    transition: background-image 0.5s ease-in-out; /* Smooth transition for background change */
+}
+
+/* Style for the hero section and background */
+.hero {
     height: 100vh; /* Full height of the viewport */
     display: flex;
     justify-content: center;
@@ -19,7 +20,34 @@ body, html {
     text-align: center;
 }
 
+/* Style for navigation bar */
+.navbar {
+    position: absolute;
+    top: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: center; /* Centering buttons horizontally */
+}
+
+/* Style for navigation buttons */
+.nav-button {
+    padding: 10px 20px;
+    margin: 0 5px; /* Space between buttons */
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.nav-button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Title styling */
 .title {
     font-size: 4rem; /* Adjust size as needed */
-    margin: 0;
+    margin-top: 50px; /* Space from top including navbar */
 }
