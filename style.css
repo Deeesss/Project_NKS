@@ -51,3 +51,28 @@ body, html {
     font-size: 4rem; /* Adjust size as needed */
     margin-top: 50px; /* Space from top including navbar */
 }
+
+/* Responsive styles */
+@media (max-width: 600px) {
+    .nav-button {
+        padding: 15px 20px; /* Larger buttons for touch devices */
+    }
+    .title {
+        font-size: 2rem; /* Smaller title for smaller screens */
+    }
+    .navbar {
+        flex-direction: column; /* Stack navbar items vertically */
+    }
+}
+
+/* Cryptocurrency prices display styling */
+#crypto-prices {
+    color: white; /* Ensures readability against dark or variable backgrounds */
+    font-size: 18px; /* Suitable for visibility without overwhelming the layout */
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black background for better contrast */
+    border-radius: 8px; /* Softens the edges for a smoother visual appeal */
+    text-align: center; /* Centers the text within the price display */
+    margin-top: 20px; /* Provides a visual separation from other content */
+    display: none; /* Initially hidden, will be shown on 'Wallet' button click */
+}

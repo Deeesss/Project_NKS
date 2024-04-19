@@ -12,22 +12,18 @@
             <button class="nav-button">Home</button>
             <button class="nav-button">About</button>
             <button class="nav-button">Game</button>
-            <button class="nav-button">Wallet</button>
+            <button class="nav-button" id="wallet-button">Wallet</button> <!-- Added ID for Wallet button -->
             <button class="nav-button">Marketplace</button>
             <button class="nav-button">Nekocubes Token</button>
             <button class="nav-button" id="change-background">Change Background</button>
         </div>
         <h1 class="title">Welcome to NEKOS Game</h1>
-        <!-- The subtitle and description can go here, if any. -->
+        <div id="crypto-prices" style="display: none;"> <!-- Hidden by default -->
+            <p id="btc-price">Loading BTC Price...</p>
+            <p id="eth-price">Loading ETH Price...</p>
+            <p id="cosmos-price">Loading COSMOS Price...</p>
+        </div>
     </div>
-    <script>
-        const backgrounds = ['Third-design.webp', 'First-design.webp', 'Second-design.webp', 'Fourth-design.webp'];
-        let currentBackgroundIndex = 0; // Start with the first image in the array
-        document.body.style.backgroundImage = `url('${backgrounds[currentBackgroundIndex]}')`; // Set initial background
-        document.getElementById('change-background').addEventListener('click', function() {
-            currentBackgroundIndex = (currentBackgroundIndex + 1) % backgrounds.length;
-            document.body.style.backgroundImage = `url('${backgrounds[currentBackgroundIndex]}')`;
-        });
-    </script>
+    <script src="app.js"></script> <!-- Updated to load external JavaScript file -->
 </body>
 </html>
