@@ -7,23 +7,45 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="hero">
+    <!-- Main Hero Section -->
+    <div class="hero" id="hero">
         <div class="navbar">
-            <button class="nav-button">Home</button>
-            <button class="nav-button">About</button>
-            <button class="nav-button">Game</button>
-            <button class="nav-button" id="wallet-button">Wallet</button> <!-- Added ID for Wallet button -->
-            <button class="nav-button">Marketplace</button>
-            <button class="nav-button">Nekocubes Token</button>
+            <button class="nav-button" id="home-button">Home</button>
+            <button class="nav-button" id="about-button">About</button>
+            <button class="nav-button" id="game-button">Game</button>
+            <button class="nav-button" id="wallet-button">Wallet</button>
+            <button class="nav-button" id="mining-button">Mining</button>
+            <button class="nav-button" id="marketplace-button">Marketplace</button>
+            <button class="nav-button" id="neko-button">Nekocubes Token</button>
             <button class="nav-button" id="change-background">Change Background</button>
         </div>
         <h1 class="title"></h1>
-        <div id="crypto-prices" style="display: none;"> <!-- Hidden by default -->
-            <p id="btc-price">Loading BTC Price...</p>
-            <p id="eth-price">Loading ETH Price...</p>
-            <p id="cosmos-price">Loading COSMOS Price...</p>
-        </div>
     </div>
-    <script src="app.js"></script> <!-- Updated to load external JavaScript file -->
+    
+    <!-- Wallet Section, hidden by default -->
+    <div id="wallet-page" class="page-content" style="display: none;">
+        <h2>Your Wallet</h2>
+        <!-- Crypto Prices inside wallet section -->
+        <div id="crypto-prices-wallet">
+            <p>BTC Price: <span id="btc-price-wallet">Loading...</span></p>
+            <p>ETH Price: <span id="eth-price-wallet">Loading...</span></p>
+            <p>COSMOS Price: <span id="cosmos-price-wallet">Loading...</span></p>
+        </div>
+        <img src="wallet.webp" alt="Wallet Image" class="wallet-image"/>
+        <button class="nav-button close-button" id="close-wallet">Close Wallet</button>
+    </div>
+
+    <!-- Mining Section, hidden by default -->
+    <div id="mining-page" class="page-content" style="display: none;">
+        <h2>Mining SPICE</h2>
+        <div id="mining-progress">
+            <div id="mining-progress-bar"></div>
+        </div>
+        <p>SPICE Balance: <span id="spice-balance">0</span></p>
+        <button id="claim-spice" disabled>Claim SPICE</button>
+        <button class="nav-button close-button" id="close-mining">Close Mining</button>
+    </div>
+
+    <script src="app.js" defer></script>
 </body>
 </html>

@@ -4,37 +4,115 @@ body, html {
     padding: 0;
     height: 100%;
     width: 100%;
+    background: url('default-background.webp') no-repeat center center fixed; /* Default background */
     background-size: cover;
-    background-position: center;
-    transition: background-image 0.5s ease-in-out; /* Smooth transition for background change */
+    transition: background-image 0.5s ease-in-out;
 }
 
 /* Style for the hero section and background */
 .hero {
-    height: 100vh; /* Full height of the viewport */
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    color: white; /* Or any other color for the text */
+    color: white;
     text-align: center;
 }
 
 /* Style for navigation bar */
 .navbar {
     position: absolute;
-    top: 10px;
+    top: 0;
     width: 100%;
     display: flex;
-    justify-content: center; /* Centering buttons horizontally */
+    justify-content: space-around; /* Updated for even spacing */
+    padding: 10px 0; /* Give some padding at the top and bottom */
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
 }
 
 /* Style for navigation buttons */
 .nav-button {
     padding: 10px 20px;
-    margin: 0 5px; /* Space between buttons */
+    margin: 0 5px;
     color: white;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    background-color: transparent;
+    border: 2px solid white; /* Added border for better visibility */
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, transform 0.2s; /* Added transform for interaction */
+}
+
+.nav-button:hover, .nav-button:focus {
+    background-color: rgba(255, 165, 0, 0.8); /* Orange hover effect */
+    color: black;
+    transform: translateY(-2px); /* Slight raise effect on hover */
+}
+
+/* Title styling */
+.title {
+    font-size: 4rem;
+    margin-bottom: 20px;
+}
+
+/* Responsive styles */
+@media (max-width: 600px) {
+    .navbar {
+        flex-direction: column;
+        align-items: center; /* Center items for mobile */
+    }
+
+    .nav-button {
+        padding: 15px 20px;
+        width: 90%; /* Full-width buttons on mobile */
+        text-align: center;
+    }
+
+    .title {
+        font-size: 2rem;
+    }
+}
+
+/* Cryptocurrency price display on the hero */
+.crypto-price {
+    display: inline-block; /* Inline display for crypto prices */
+    margin: 0 10px; /* Space out the crypto prices */
+    font-weight: bold;
+}
+
+/* Wallet and Mining page content styling */
+.page-content {
+    z-index: 10; /* Ensure it's above other content */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+    position: absolute; /* Added position absolute for layering */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Offset the transform */
+    width: 80%; /* Adjust width as needed */
+    max-width: 600px; /* Ensures the content doesn't stretch too wide on larger screens */
+    padding: 20px; /* Padding for content */
+    background-color: rgba(0, 0, 0, 0.8); /* Background color for content */
+    border-radius: 8px; /* Rounded corners for the content boxes */
+    text-align: center; /* Center text within the content boxes */
+    color: white; /* Text color for the content */
+    font-size: 18px; /* Font size for the content */
+    display: none; /* Start with content not displayed */
+}
+
+/* Wallet image style */
+#wallet-page img {
+    max-width: 90%; /* Max width for the image to maintain responsiveness */
+    height: auto; /* Keep image height proportional */
+    border-radius: 5px; /* Rounded corners for the image */
+}
+
+/* Style for the 'Claim' button */
+#claim-spice {
+    padding: 10px 20px;
+    margin-top: 10px;
+    color: white;
+    background-color: #f39c12;
     border: none;
     border-radius: 5px;
     font-size: 16px;
@@ -42,37 +120,38 @@ body, html {
     transition: background-color 0.3s;
 }
 
-.nav-button:hover {
-    background-color: rgba(0, 0, 0, 0.8);
+#claim-spice:disabled {
+    background-color: #cccccc; /* Disabled button background */
+    cursor: not-allowed; /* Disabled cursor */
 }
 
-/* Title styling */
-.title {
-    font-size: 4rem; /* Adjust size as needed */
-    margin-top: 50px; /* Space from top including navbar */
+#claim-spice:hover:enabled {
+    background-color: #e67e22; /* Hover background for enabled button */
 }
 
-/* Responsive styles */
-@media (max-width: 600px) {
-    .nav-button {
-        padding: 15px 20px; /* Larger buttons for touch devices */
-    }
-    .title {
-        font-size: 2rem; /* Smaller title for smaller screens */
-    }
-    .navbar {
-        flex-direction: column; /* Stack navbar items vertically */
-    }
+/* Mining progress bar styles */
+#mining-progress-bar {
+    width: 0%; /* Start with no width */
+    height: 20px;
+    background-color: #04AA6D; /* Color for the progress bar */
+    border-radius: 5px; /* Rounded corners for the progress bar */
+    transition: width 1s ease-in-out; /* Transition for the progress bar growth */
 }
 
-/* Cryptocurrency prices display styling */
-#crypto-prices {
-    color: white; /* Ensures readability against dark or variable backgrounds */
-    font-size: 18px; /* Suitable for visibility without overwhelming the layout */
-    padding: 10px;
-    background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black background for better contrast */
-    border-radius: 8px; /* Softens the edges for a smoother visual appeal */
-    text-align: center; /* Centers the text within the price display */
-    margin-top: 20px; /* Provides a visual separation from other content */
-    display: none; /* Initially hidden, will be shown on 'Wallet' button click */
+/* Close button styling */
+.close-button {
+    padding: 5px 10px;
+    font-size: 12px;
+    margin-top: 20px;
+    color: white;
+    background-color: transparent;
+    border: 1px solid white; /* White border for visibility */
+    border-radius: 5px; /* Rounded corners for the button */
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.close-button:hover {
+    background-color: rgba(255, 165, 0, 0.8); /* Hover effect for the close button */
+    color: black; /* Text color change on hover for visibility */
 }
