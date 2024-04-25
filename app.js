@@ -1,105 +1,125 @@
-// Global variables for application state management
-const backgrounds = ['First-design.webp', 'Second-design.webp', 'Third-design.webp', 'Fourth-design.webp'];
-let currentBackgroundIndex = 0; // Index for non-wallet backgrounds
-let spiceBalance = 0;
-let spiceAccumulated = 0;
-let miningInterval;
+// Path to the background images
+const backgrounds = ['First-design.png', 'Second-design.webp', 'Third-design.webp', 'Fourth-design.webp'];
+let currentBackgroundIndex = 0; // Index of the current background
+let spiceBalance = 0; // User's SPICE balance
+let spiceAccumulated = 0; // Accumulated SPICE awaiting claim
+let miningInterval; // Interval for mining simulation
 
-// Load saved token balances
-function loadSavedBalances() {
+// Load saved SPICE balances from localStorage
+const loadSavedBalances = () => {
     spiceBalance = parseFloat(localStorage.getItem('spiceBalance')) || 0;
     spiceAccumulated = parseFloat(localStorage.getItem('spiceAccumulated')) || 0;
     updateSpiceDisplay();
-}
+};
 
-// Update display of SPICE tokens
-function updateSpiceDisplay() {
+// Update the display of SPICE balance and progress bar
+const updateSpiceDisplay = () => {
     const spiceDisplayElement = document.getElementById('spice-balance');
     const miningProgressBar = document.getElementById('mining-progress-bar');
-    const progressPercentage = Math.min(spiceAccumulated / 100 * 100, 100); // Caps progress at 100%
-    spiceDisplayElement.textContent = spiceBalance.toFixed(2);
-    miningProgressBar.style.width = `${progressPercentage}%`;
-    document.getElementById('claim-spice').disabled = spiceAccumulated < 20; // Enable button at 20% of mining progress
-}
+    if (spiceDisplayElement && miningProgressBar) {
+        const progressPercentage = Math.min((spiceAccumulated / 100) * 100, 100);
+        spiceDisplayElement.textContent = spiceBalance.toFixed(2);
+        miningProgressBar.style.width = `${progressPercentage}%`;
+        document.getElementById('claim-spice').disabled = spiceAccumulated < 20;
+    }
+};
 
-// Save the current token balances to localStorage
-function saveBalances() {
+// Save the current SPICE balances to localStorage
+const saveBalances = () => {
     localStorage.setItem('spiceBalance', spiceBalance.toString());
     localStorage.setItem('spiceAccumulated', spiceAccumulated.toString());
-}
+};
 
-// Claim SPICE tokens
-function claimSpiceTokens() {
+// Function to claim SPICE tokens
+const claimSpiceTokens = () => {
+    const claimButton = document.getElementById('claim-spice');
+    const loadingIndicator = document.getElementById('loading-indicator');
+    const claimMessage = document.getElementById('claim-message');
+
     if (spiceAccumulated >= 20) {
-        spiceBalance += spiceAccumulated;
-        spiceAccumulated = 0; // Reset the accumulated SPICE
-        updateSpiceDisplay();
-        saveBalances();
-        alert("You've successfully claimed your SPICE tokens!");
+        claimButton.disabled = true;
+        loadingIndicator.style.display = 'block'; // Show loading indicator
+
+        // Simulate the claim process with a delay
+        setTimeout(() => {
+            spiceBalance += spiceAccumulated;
+            spiceAccumulated = 0;
+            updateSpiceDisplay();
+            saveBalances();
+
+            loadingIndicator.style.display = 'none'; // Hide loading indicator
+            claimMessage.style.display = 'block'; // Show success message
+            claimMessage.textContent = "You've successfully claimed your SPICE tokens!";
+
+            // Hide the message after some time and enable the claim button
+            setTimeout(() => {
+                claimMessage.style.display = 'none';
+                claimButton.disabled = false;
+            }, 5000);
+
+        }, 2000); // Time in milliseconds for the loading effect
     }
-}
+};
 
-// Start mining SPICE tokens
-function startSpiceMining() {
-    if (miningInterval) clearInterval(miningInterval);
+// Function to start mining SPICE tokens
+const startSpiceMining = () => {
+    clearInterval(miningInterval);
     miningInterval = setInterval(() => {
-        spiceAccumulated += 100 / 60; // Accumulate 100 SPICE per hour
-        if (spiceAccumulated > 100) spiceAccumulated = 100; // Ensure that we don't go over 100
+        spiceAccumulated += (100 / 60);
+        if (spiceAccumulated > 100) spiceAccumulated = 100;
         updateSpiceDisplay();
-    }, 1000 * 60); // Every minute
-}
+    }, 1000);
+};
 
-// Fetch crypto prices
-function fetchCryptoPrices() {
+// Fetch cryptocurrency prices - placeholder for future implementation
+const fetchCryptoPrices = () => {
     // Placeholder for fetching crypto prices functionality
-}
+};
 
-// Function to switch background images, excluding the wallet background
-function switchBackground() {
+// Function to switch background images
+const switchBackground = () => {
     currentBackgroundIndex = (currentBackgroundIndex + 1) % backgrounds.length;
     document.body.style.backgroundImage = `url('${backgrounds[currentBackgroundIndex]}')`;
-}
+};
 
-// Function to display the wallet section and update the background
-function showWallet() {
-    clearInterval(miningInterval); // Stop mining when wallet is open
+// Display Wallet section
+const showWallet = () => {
+    clearInterval(miningInterval);
     document.getElementById('wallet-page').style.display = 'block';
     document.getElementById('mining-page').style.display = 'none';
     document.getElementById('hero').style.display = 'none';
-    document.body.style.backgroundImage = `url('wallet.webp')`;
-}
+    document.body.style.backgroundImage = "url('wallet.webp')";
+};
 
-// Function to display the mining section
-function showMining() {
-    clearInterval(miningInterval); // Stop mining when other page is open
+// Display Mining section
+const showMining = () => {
+    clearInterval(miningInterval);
     document.getElementById('mining-page').style.display = 'block';
     document.getElementById('wallet-page').style.display = 'none';
     document.getElementById('hero').style.display = 'none';
-    startSpiceMining(); // Restart mining when mining page is displayed
-}
+    startSpiceMining();
+};
 
-// Close wallet or mining section and show the main content
-function closePageSection() {
+// Close Wallet or Mining section
+const closePageSection = () => {
     document.getElementById('wallet-page').style.display = 'none';
     document.getElementById('mining-page').style.display = 'none';
     document.getElementById('hero').style.display = 'flex';
-    switchBackground(); // Switch back to the main background
-    startSpiceMining(); // Restart mining when the section is closed
-}
+    switchBackground();
+};
 
-// Function to show the home section and hide all others
-function showHome() {
-    clearInterval(miningInterval); // Optional: stop mining when home is displayed
+// Show the Home section
+const showHome = () => {
+    clearInterval(miningInterval);
     document.getElementById('hero').style.display = 'flex';
     document.getElementById('wallet-page').style.display = 'none';
     document.getElementById('mining-page').style.display = 'none';
-    // Optional: Reset background to default or remove it
     document.body.style.backgroundImage = '';
-    startSpiceMining(); // Optional: restart mining if needed
-}
+    startSpiceMining();
+};
 
-// Set up event listeners
-function setupEventListeners() {
+// Set up event listeners for UI elements
+const setupEventListeners = () => {
     document.getElementById('home-button').addEventListener('click', showHome);
     document.getElementById('wallet-button').addEventListener('click', showWallet);
     document.getElementById('mining-button').addEventListener('click', showMining);
@@ -107,15 +127,11 @@ function setupEventListeners() {
     document.getElementById('close-mining').addEventListener('click', closePageSection);
     document.getElementById('claim-spice').addEventListener('click', claimSpiceTokens);
     document.getElementById('change-background').addEventListener('click', switchBackground);
-}
+};
 
-// Initialize the application
-function initializeApp() {
+// Initialize the application on DOMContentLoaded
+document.addEventListener('DOMContentLoaded', () => {
     loadSavedBalances();
-    updateSpiceDisplay();
     setupEventListeners();
-    switchBackground(); // Set initial background
-    startSpiceMining(); // Start mining process
-}
-
-document.addEventListener('DOMContentLoaded', initializeApp);
+    startSpiceMining();
+});
