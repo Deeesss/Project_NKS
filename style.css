@@ -1,167 +1,170 @@
-* General body and html styles */
+/* General body and html styles */
 body, html {
     margin: 0;
     padding: 0;
     height: 100%;
     width: 100%;
-    background: url('default-background.webp') no-repeat center center fixed; /* Default background */
-    background-size: cover;
-    transition: background-image 0.5s ease-in-out;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-bottom: 60px; /* Space for fixed navbar */
 }
 
-/* Style for the hero section and background */
+/* Body background */
+body {
+    background: url('Fourth-design.webp') no-repeat center center fixed;
+    background-size: cover;
+    transition: background-image 0.5s ease-in-out;
+}
+
+/* Fixed navbar for all screen sizes */
+.navbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 10px 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    z-index: 1000; /* Ensure navbar is above other content */
+}
+
+/* Hero section with slight dark overlay */
 .hero {
-    height: 100vh;
+    height: calc(100vh - 60px); /* Adjusted height to be above the navbar */
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    color: white;
     text-align: center;
-    background: rgba(0, 0, 0, 0.5); /* Slight dark overlay */
+    padding: 20px;
 }
 
-/* Style for navigation bar */
-.navbar {
-    position: fixed; /* Fixed to stay on top while scrolling */
-    top: 0;
-    width: 100%;
-    display: flex;
-    justify-content: space-around; 
-    padding: 20px 0;
-    background: rgba(0, 0, 0, 0.8); /* Darker background for better legibility */
-    backdrop-filter: blur(5px); /* Blur effect for modern glassmorphism style */
-}
-
-/* Style for navigation buttons */
+/* Navigation buttons with a modern appearance */
 .nav-button {
     padding: 10px 20px;
-    margin: 0 10px;
     color: white;
     background-color: transparent;
-    border: 2px solid white;
-    border-radius: 5px;
-    font-size: 16px;
+    border: none;
+    border-radius: 20px;
+    font-size: 18px;
     cursor: pointer;
-    transition: all 0.3s ease-in-out; /* Smooth transition for all properties */
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+/* Hover and focus effects for buttons */
 .nav-button:hover, .nav-button:focus {
-    background-color: #ff5722; /* Bright color for interactivity */
     color: #fff;
-    transform: scale(1.05); /* Scale effect for feedback */
-    border-color: #ff5722;
+    background-color: #ff5722;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 
 /* Title styling */
 .title {
-    font-size: 4rem;
-    margin-bottom: 20px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Text shadow for depth */
-}
-
-/* Responsive styles */
-@media (max-width: 600px) {
-    .navbar {
-        flex-direction: column;
-    }
-
-    .nav-button {
-        padding: 10px 20px;
-        width: 90%;
-        text-align: center;
-        margin-bottom: 10px; /* Add space between buttons */
-    }
-
-    .title {
-        font-size: 2.5rem;
-    }
-}
-
-/* Wallet and Mining page content styling */
-.page-content {
-    z-index: 10;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 90%;
-    max-width: 600px;
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.8); /* Light background for readability */
-    border-radius: 8px;
-    text-align: center;
-    color: #333; /* Dark text for contrast */
-    font-size: 18px;
-    display: none; /* Hidden by default */
-}
-
-/* Wallet image style */
-.wallet-image {
-    max-width: 90%;
-    height: auto;
-    border-radius: 5px;
-}
-
-/* Style for the 'Claim' button */
-#claim-spice {
-    padding: 10px 20px;
-    margin-top: 10px;
+    font-size: 2rem;
     color: white;
-    background-color: #af894c; /* Material green for a friendly action color */
+    margin-bottom: 20px;
+}
+
+/* Style for wallet and mining card using card layout */
+.card {
+    position: relative;
+    top: 20vh; /* Positioned slightly down from the top */
+    margin: auto;
+    max-width: 90%;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Claim button style */
+.btn, .btn-close {
+    padding: 12px 25px;
+    color: white;
+    background-color: #f39c12;
     border: none;
-    border-radius: 5px;
-    font-size: 16px;
+    border-radius: 20px;
+    font-size: 1rem;
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
-#claim-spice:disabled {
-    background-color: #a9a9a9;
+/* Disabled and hover effects for claim button */
+.btn:disabled, .btn-close {
+    background-color: #cccccc;
     cursor: not-allowed;
 }
 
-#claim-spice:hover:enabled {
-    background-color: #b46d11;
-    transform: scale(1.05);
+.btn:hover:enabled, .btn-close:hover {
+    background-color: #e67e22;
 }
 
-/* Mining progress bar styles */
+/* Mining progress bar with rounded corners */
 #mining-progress-bar {
     width: 0%;
     height: 20px;
-    background-color: #af7f4c;
-    border-radius: 5px;
+    background-color: #04AA6D;
+    border-radius: 10px;
     transition: width 1s ease-in-out;
 }
 
-/* Close button styling */
-.close-button {
+/* Close button with red accent color for caution */
+.btn-close {
     padding: 5px 10px;
-    font-size: 12px;
-    margin-top: 20px;
     color: white;
-    background-color: #f44336; /* Material red for cautionary actions */
+    background-color: #d19721;
     border: none;
-    border-radius: 5px;
+    border-radius: 20px;
+    margin-top: 20px;
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
-.close-button:hover {
-    background-color: #dcbeaa;
-    transform: scale(1.05);
+.btn-close:hover {
+    background-color: #d32f2f;
 }
-/* Loading indicator styles */
+
+/* Responsive design for smaller screens */
+@media (max-width: 600px) {
+    .title {
+        font-size: 1.5rem;
+    }
+
+    /* Adjusted navbar styling for smaller screens */
+    .navbar {
+        padding: 10px 0;
+    }
+
+    .nav-button {
+        padding: 20px 25px;
+        font-size: 19px;
+        margin: 0 5px;
+    }
+
+    .hero .title {
+        display: none;
+    }
+
+    .hero {
+        height: calc(100vh - 50px); /* Adjust hero height to account for navbar height */
+        margin-bottom: 0; /* Space for navbar is already accounted for */
+    }
+}
+
+/* Loading indicator with modern spinner animation */
 .loading-indicator {
-    display: block;
-    margin: 20px auto;
-    border: 5px solid #f3f3f3; /* Light grey */
-    border-top: 5px solid #db9534; /* Blue */
+    border: 5px solid #c98a04;
+    border-top: 5px solid #ffffff;
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     animation: spin 2s linear infinite;
 }
 
@@ -170,9 +173,10 @@ body, html {
     100% { transform: rotate(360deg); }
 }
 
+/* Claim message with a friendly color */
 .claim-message {
-    color: #af874c; /* Material green for successful message */
+    color: #4CAF50;
     text-align: center;
-    margin-top: 20px;
     display: none;
+    margin-top: 20px;
 }

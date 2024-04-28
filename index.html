@@ -9,45 +9,40 @@
 <body>
     <!-- Main Hero Section -->
     <div class="hero" id="hero">
-        <nav class="navbar">
-            <button class="nav-button" id="home-button">Domů</button>
-            <button class="nav-button" id="about-button">O Hře</button>
-            <button class="nav-button" id="game-button">Hra</button>
-            <button class="nav-button" id="wallet-button">Peněženka</button>
-            <button class="nav-button" id="mining-button">Těžba</button>
-            <button class="nav-button" id="marketplace-button">Tržiště</button>
-            <button class="nav-button" id="neko-button">Token Nekocubes</button>
-            <button class="nav-button" id="change-background">Změnit Pozadí</button>
-        </nav>
-        <h1 class="title">NEKOS Game</h1>
+        <h1 class="title"></h1>
     </div>
     
-    <!-- Wallet Section, hidden by default -->
-    <section id="wallet-page" class="page-content hidden">
-        <h2>Vaše Peněženka</h2>
-        <div id="crypto-prices-wallet">
-            <p>BTC Cena: <span id="btc-price-wallet">Načítání...</span></p>
-            <p>ETH Cena: <span id="eth-price-wallet">Načítání...</span></p>
-            <p>COSMOS Cena: <span id="cosmos-price-wallet">Načítání...</span></p>
+    <!-- Mining Card Section -->
+    <div id="mining-card" class="card hidden">
+        <h2 class="card-title">Těžba SPICE</h2>
+        <div class="card-info">
+            <p>SPICE Balance: <span id="spice-balance">0.00</span></p>
+            <div id="mining-progress-bar-container">
+                <div id="mining-progress-bar"></div>
+            </div>
+            <button id="claim-spice" class="btn" disabled>Claim SPICE</button>
+            <div id="loading-indicator" class="loading-indicator" style="display: none;"></div>
+            <div id="claim-message" class="claim-message" style="display: none;"></div>
         </div>
-        <img src="wallet.webp" alt="Obrázek Peněženky" class="wallet-image"/>
-        <button class="nav-button close-button" id="close-wallet">Zavřít Peněženku</button>
-    </section>
-
-   <!-- Mining Section, hidden by default -->
-<div id="mining-page" class="page-content">
-    <h2>Mining SPICE</h2>
-    <div id="mining-progress">
-        <div id="mining-progress-bar"></div>
+        <button class="btn-close" id="close-mining">Zavřít Těžbu</button>
     </div>
-    <p>SPICE Balance: <span id="spice-balance">0</span></p>
-    <button id="claim-spice">Claim SPICE</button>
-    <!-- Loading Indicator and Claim Message -->
-    <div id="claim-message" class="claim-message"></div>
-    <div id="loading-indicator" class="loading-indicator" style="display:none;"></div>
-    <!-- End of Loading Indicator and Claim Message -->
-    <button class="nav-button close-button" id="close-mining">Close Mining</button>
-</div>
+
+    <!-- Wallet Card Section -->
+    <div id="wallet-card" class="card hidden">
+        <h2 class="card-title">Peněženka</h2>
+        <div class="card-info">
+            <!-- Add wallet contents here -->
+        </div>
+        <button class="btn-close" id="close-wallet">Zavřít Peněženku</button>
+    </div>
+
+    <!-- Spodní navigační lišta -->
+    <div class="bottom-nav">
+        <button class="nav-button" id="home-button">Missions</button>
+        <button class="nav-button" id="about-button">About</button>
+        <button class="nav-button" id="wallet-button">Wallet</button>
+        <button class="nav-button" id="mining-button">Mining</button>
+    </div>
 
     <script src="app.js" defer></script>
 </body>
