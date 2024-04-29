@@ -9,7 +9,21 @@
 <body>
     <!-- Main Hero Section -->
     <div class="hero" id="hero">
-        <h1 class="title"></h1>
+        <h1 class="title">NEKOS Game</h1> <!-- Můžete přidat název hry nebo jakýkoliv text -->
+        <!-- Health Bar pro Monk Demon -->
+        <div class="sao-healthbar">
+            <div class="main-container">
+                <div class="character-name">Monk Demon</div>
+                <div class="health-bar--outline">
+                    <div class="health-bar--border">
+                        <div class="health-bar--background">
+                            <div id="health-bar--health" class="health-bar--health" style="width: 100%;"></div> <!-- Start s plným zdravím -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="health-indicator">Health: <span id="health-indicator">100</span> / 100</div>
+        </div>
     </div>
     
     <!-- Mining Card Section -->
@@ -22,7 +36,7 @@
             </div>
             <button id="claim-spice" class="btn" disabled>Claim SPICE</button>
             <div id="loading-indicator" class="loading-indicator" style="display: none;"></div>
-            <div id="claim-message" class="claim-message" style="display: none;"></div>
+            <div id="claim-message" class="claim-message" style="display: none;">Úspěšně jste nárokovali vaše SPICE tokeny!</div>
         </div>
         <button class="btn-close" id="close-mining">Zavřít Těžbu</button>
     </div>

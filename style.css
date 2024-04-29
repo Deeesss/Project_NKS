@@ -10,7 +10,7 @@ body, html {
 
 /* Body background */
 body {
-    background: url('Fourth-design.webp') no-repeat center center fixed;
+    background: url('Fourth-design.mp4') no-repeat center center fixed;
     background-size: cover;
     transition: background-image 0.5s ease-in-out;
 }
@@ -18,17 +18,18 @@ body {
 /* Fixed navbar for all screen sizes */
 .navbar {
     position: fixed;
-    bottom: 0;
+    top: 0; /* Posunout nahoru k hornímu okraji obrazovky */
     left: 0;
     right: 0;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center; /* Centrování tlačítek v liště */
     align-items: center;
     padding: 10px 0;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgb(49, 42, 42);
     backdrop-filter: blur(5px);
-    z-index: 1000; /* Ensure navbar is above other content */
-}
+    z-index: 1000;
+  }
+
 
 /* Hero section with slight dark overlay */
 .hero {
@@ -74,7 +75,7 @@ body {
     top: 20vh; /* Positioned slightly down from the top */
     margin: auto;
     max-width: 90%;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(196, 173, 173, 0.9);
     border-radius: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     padding: 20px;
@@ -82,6 +83,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    z-index: 1050;
 }
 
 /* Claim button style */
@@ -94,6 +96,7 @@ body {
     font-size: 1rem;
     cursor: pointer;
     transition: all 0.3s ease;
+    margin-top: 20px;
 }
 
 /* Disabled and hover effects for claim button */
@@ -137,7 +140,6 @@ body {
         font-size: 1.5rem;
     }
 
-    /* Adjusted navbar styling for smaller screens */
     .navbar {
         padding: 10px 0;
     }
@@ -153,8 +155,8 @@ body {
     }
 
     .hero {
-        height: calc(100vh - 50px); /* Adjust hero height to account for navbar height */
-        margin-bottom: 0; /* Space for navbar is already accounted for */
+        height: calc(100vh - 50px);
+        margin-bottom: 0;
     }
 }
 
@@ -179,4 +181,100 @@ body {
     text-align: center;
     display: none;
     margin-top: 20px;
+}
+
+/* Health Bar Styles - Custom */
+.sao-healthbar {
+  width: 350px;
+  height: 50px;
+  position: absolute;
+  top: 20px; /* Adjust this as needed */
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 25px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.main-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 10px;
+}
+
+.character-name {
+  margin-right: 15px;
+  color: #FFF;
+  font-size: 1.2em;
+}
+
+.health-bar--outline {
+  flex-grow: 1;
+  background: #FFF;
+  padding: 3px;
+  border-radius: 20px;
+}
+
+.health-bar--border {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 18px;
+  padding: 2px;
+}
+
+.health-bar--background {
+  width: 100%;
+  background: #FFF;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.health-bar--health {
+  height: 30px;
+  width: 100%; /* This will be dynamically adjusted */
+  background: linear-gradient(to right, #660000, #cc0000);
+  border-radius: 15px;
+  transition: width 0.5s ease-in-out;
+}
+
+.health-indicator {
+  position: absolute;
+  top: 60px; /* Adjust this as needed */
+  left: 50%;
+  transform: translateX(-50%);
+  color: #FFF;
+  font-size: 0.8em;
+}
+
+/* End of Health Bar Styles */
+
+#loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.9); /* Tmavé pozadí */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+/* Načítací spinner */
+#loading-spinner {
+    border: 5px solid #f3f3f3; /* Světlá část */
+    border-top: 5px solid #3498db; /* Modrá část */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
