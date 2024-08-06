@@ -1,182 +1,140 @@
-/* General body and html styles */
-body, html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    width: 100%;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    padding-bottom: 60px; /* Space for fixed navbar */
-}
-
-/* Body background */
 body {
-    background: url('Fourth-design.webp') no-repeat center center fixed;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
     background-size: cover;
+    background-position: center;
+    color: #fff;
     transition: background-image 0.5s ease-in-out;
 }
 
-/* Fixed navbar for all screen sizes */
-.navbar {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    padding: 10px 0;
-    background: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(5px);
-    z-index: 1000; /* Ensure navbar is above other content */
-}
-
-/* Hero section with slight dark overlay */
 .hero {
-    height: calc(100vh - 60px); /* Adjusted height to be above the navbar */
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+    height: 100vh;
     text-align: center;
-    padding: 20px;
 }
 
-/* Navigation buttons with a modern appearance */
-.nav-button {
-    padding: 10px 20px;
-    color: white;
-    background-color: transparent;
-    border: none;
-    border-radius: 20px;
-    font-size: 18px;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-/* Hover and focus effects for buttons */
-.nav-button:hover, .nav-button:focus {
-    color: #fff;
-    background-color: #ff5722;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-}
-
-/* Title styling */
-.title {
-    font-size: 2rem;
-    color: white;
-    margin-bottom: 20px;
-}
-
-/* Style for wallet and mining card using card layout */
-.card {
+.mining-panel {
     position: relative;
-    top: 20vh; /* Positioned slightly down from the top */
+    text-align: center;
+    color: #fff;
+    max-width: 1320px; 
     margin: auto;
-    max-width: 90%;
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    padding: 20px;
-    text-align: left;
+}
+
+.mining-image {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 25%);
+    width: 60%;
+    height: auto;
+    display: block;
+        
+}
+
+.panel-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
-/* Claim button style */
-.btn, .btn-close {
-    padding: 12px 25px;
-    color: white;
-    background-color: #f39c12;
-    border: none;
-    border-radius: 20px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-/* Disabled and hover effects for claim button */
-.btn:disabled, .btn-close {
-    background-color: #cccccc;
-    cursor: not-allowed;
-}
-
-.btn:hover:enabled, .btn-close:hover {
-    background-color: #e67e22;
-}
-
-/* Mining progress bar with rounded corners */
-#mining-progress-bar {
-    width: 0%;
+#progress-container {
+    width: 60%;
+    background: #444; /* Pridanie pozadia na lepšie viditeľnosť */
+    border-radius: 5px;
+    overflow: hidden;
     height: 20px;
-    background-color: #04AA6D;
-    border-radius: 10px;
-    transition: width 1s ease-in-out;
+    margin: 20px auto 0;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
-/* Close button with red accent color for caution */
-.btn-close {
-    padding: 5px 10px;
+#progress-bar {
+    width: 0;
+    height: 100%;
+    background: gold;
+    transition: width 1s;
+}
+
+.panel-btn {
+    font-size: 16px;
     color: white;
-    background-color: #d19721;
-    border: none;
-    border-radius: 20px;
-    margin-top: 20px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: text-shadow 0.3s ease;
+    position: absolute;
 }
 
-.btn-close:hover {
-    background-color: #d32f2f;
+.panel-btn:hover {
+    text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 30px #ff0000;
 }
 
-/* Responsive design for smaller screens */
-@media (max-width: 600px) {
-    .title {
-        font-size: 1.5rem;
-    }
-
-    /* Adjusted navbar styling for smaller screens */
-    .navbar {
-        padding: 10px 0;
-    }
-
-    .nav-button {
-        padding: 20px 25px;
-        font-size: 19px;
-        margin: 0 5px;
-    }
-
-    .hero .title {
-        display: none;
-    }
-
-    .hero {
-        height: calc(100vh - 50px); /* Adjust hero height to account for navbar height */
-        margin-bottom: 0; /* Space for navbar is already accounted for */
-    }
+.claim-btn {
+    bottom: 15%; 
+    left: 22%; 
+    transform: translate(50%, -50%);
 }
 
-/* Loading indicator with modern spinner animation */
-.loading-indicator {
-    border: 5px solid #c98a04;
-    border-top: 5px solid #ffffff;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    animation: spin 2s linear infinite;
+.close-btn { 
+    right: 30%; 
+    transform: translate(50%, -50%);
 }
 
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-/* Claim message with a friendly color */
-.claim-message {
-    color: #4CAF50;
-    text-align: center;
+.hidden {
     display: none;
-    margin-top: 20px;
+}
+
+.nav-button, .btn {
+    background: rgba(255, 255, 255, 0.8);
+    border: none;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    color: #333;
+}
+
+.nav-button:hover, .btn:hover {
+    background: rgba(255, 255, 255, 1);
+    transform: scale(1.05);
+}
+
+.nav-button:active, .btn:active {
+    background: #ccc;
+    transform: scale(0.95);
+}
+
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.message {
+    margin: 10px 0;
+    color: #333;
+}
+
+.g-recaptcha {
+    margin: 10px 0;
 }

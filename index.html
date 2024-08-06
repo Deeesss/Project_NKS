@@ -3,42 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEKOS Game</title>
+    <title>NEKOS Mining</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
-    <!-- Main Hero Section -->
-    <div class="hero" id="hero">
-        <h1 class="title"></h1>
+    <div class="hero page" id="hero">
+        <button id="start-button" class="btn">Start Mining</button>
     </div>
     
-    <!-- Mining Card Section -->
-    <div id="mining-card" class="card hidden">
-        <h2 class="card-title">Těžba SPICE</h2>
-        <div class="card-info">
-            <p>SPICE Balance: <span id="spice-balance">0.00</span></p>
-            <div id="mining-progress-bar-container">
-                <div id="mining-progress-bar"></div>
+    <div id="mining-card" class="hidden page">
+        <div class="mining-panel">
+            <img src="onewaay2.png" alt="Mining Panel" class="mining-image">
+            <span class="panel-btn claim-btn" id="claim-spice-btn">CLAIM SPICE</span>
+            <span class="panel-btn close-btn" id="close-mining-btn">CLOSE MINING</span>
+            <div class="panel-content">
+                <div id="progress-container">
+                    <div id="progress-bar"></div>
+                </div>
+                <div id="spice-balance">0.00</div>
             </div>
-            <button id="claim-spice" class="btn" disabled>Claim SPICE</button>
-            <div id="loading-indicator" class="loading-indicator" style="display: none;"></div>
-            <div id="claim-message" class="claim-message" style="display: none;"></div>
         </div>
-        <button class="btn-close" id="close-mining">Zavřít Těžbu</button>
     </div>
 
-    <!-- Wallet Card Section -->
-    <div id="wallet-card" class="card hidden">
-        <h2 class="card-title">Peněženka</h2>
+    <div id="captcha-card" class="hidden page">
+        <h2 class="card-title">CAPTCHA Verification</h2>
         <div class="card-info">
-            <!-- Add wallet contents here -->
+            <p id="captcha-container"></p>
+            <input type="text" id="captcha-input" class="input" placeholder="Your answer">
+            <button id="verify-captcha" class="btn">Verify</button>
+            <p id="captcha-message" class="message"></p>
         </div>
-        <button class="btn-close" id="close-wallet">Zavřít Peněženku</button>
+        <button class="btn-close" id="close-captcha">Close</button>
     </div>
 
-    <!-- Spodní navigační lišta -->
     <div class="bottom-nav">
-        <button class="nav-button" id="home-button">Missions</button>
+        <button class="nav-button" id="home-button">Home</button>
+        <button class="nav-button" id="missions-button">Missions</button>
         <button class="nav-button" id="about-button">About</button>
         <button class="nav-button" id="wallet-button">Wallet</button>
         <button class="nav-button" id="mining-button">Mining</button>

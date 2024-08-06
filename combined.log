@@ -1,0 +1,194 @@
+2024-05-19T01:36:57.759Z info: Server running on port 3000
+2024-05-19T01:40:24.624Z info: Server running on port 3000
+2024-05-19T02:31:19.595Z info: Server running on port 3000
+2024-05-19T02:31:47.057Z error: Error: misconfigured csrf
+    at csrf (C:\Users\HAWKp\OneDrive\Desktop\Project_NKS\node_modules\csurf\index.js:71:19)
+    at Layer.handle [as handle_request] (C:\Users\HAWKp\OneDrive\Desktop\Project_NKS\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\HAWKp\OneDrive\Desktop\Project_NKS\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\HAWKp\OneDrive\Desktop\Project_NKS\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\HAWKp\OneDrive\Desktop\Project_NKS\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\HAWKp\OneDrive\Desktop\Project_NKS\node_modules\express\lib\router\index.js:280:10)
+    at C:\Users\HAWKp\OneDrive\Desktop\Project_NKS\node_modules\express-rate-limit\dist\index.cjs:710:7
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async C:\Users\HAWKp\OneDrive\Desktop\Project_NKS\node_modules\express-rate-limit\dist\index.cjs:625:5
+2024-05-19T02:34:53.412Z info: Server running on port 3000
+2024-05-19T02:38:26.181Z info: Server running on port 3000
+2024-05-19T02:46:49.295Z info: Server running on port 3000
+2024-05-19T02:49:38.259Z info: Server running on port 3000
+2024-05-19T02:52:45.400Z info: Server running on port 3000
+2024-05-19T09:10:34.866Z info: Server running on port 3000
+2024-05-19T09:58:13.351Z info: Server running on port 3000
+2024-05-19T18:05:55.995Z info: Server running on port 3000
+2024-05-19T21:35:52.062Z info: Server running on port 3000
+2024-05-19T22:00:03.509Z info: Server running on port 3000
+2024-05-19T22:08:06.659Z info: Server running on port 3000
+2024-05-19T22:18:39.067Z info: Server running on port 3000
+2024-05-22T20:40:07.838Z info: Server running on port 3000
+2024-05-22T20:42:41.876Z info: GET /index.html
+2024-05-22T20:42:42.182Z info: GET /style.css
+2024-05-22T20:42:42.187Z info: GET /app.js
+2024-05-22T20:42:45.537Z info: POST /api/getBalance
+2024-05-22T20:42:45.739Z info: Received API Key:
+2024-05-22T20:42:45.742Z info: Expected API Key:
+2024-05-22T20:42:45.784Z info: GET /dark-themed-wallpaper.webp
+2024-05-22T20:42:49.859Z info: GET /favicon.ico
+2024-05-22T20:43:15.034Z info: GET /style.css
+2024-05-22T20:50:38.979Z info: Server running on port 3000
+2024-05-22T20:50:48.133Z info: GET /index.html
+2024-05-22T20:50:48.215Z info: GET /style.css
+2024-05-22T20:50:48.231Z info: GET /app.js
+2024-05-22T20:50:52.326Z info: POST /api/getBalance
+2024-05-22T20:50:52.383Z info: Received API Key:
+2024-05-22T20:50:52.403Z info: Expected API Key:
+2024-05-22T20:50:52.509Z info: GET /dark-themed-wallpaper.webp
+2024-05-22T20:56:18.540Z info: API_KEY from .env:
+2024-05-22T20:56:18.551Z info: TELEGRAM_BOT_API_KEY from .env:
+2024-05-22T20:56:18.587Z info: Server running on port 3000
+2024-05-22T20:56:35.511Z info: GET /index.html
+2024-05-22T20:56:35.682Z info: GET /style.css
+2024-05-22T20:56:35.705Z info: GET /app.js
+2024-05-22T20:56:39.060Z info: POST /api/getBalance
+2024-05-22T20:56:39.122Z info: Received API Key:
+2024-05-22T20:56:39.273Z info: Expected API Key:
+2024-05-22T20:56:39.408Z info: GET /dark-themed-wallpaper.webp
+2024-05-22T21:00:49.836Z info: API_KEY from .env:
+2024-05-22T21:00:49.849Z info: TELEGRAM_BOT_API_KEY from .env:
+2024-05-22T21:00:49.893Z info: Server running on port 3000
+2024-05-22T21:00:56.360Z info: GET /index.html
+2024-05-22T21:00:56.599Z info: GET /style.css
+2024-05-22T21:00:56.609Z info: GET /app.js
+2024-05-22T21:01:01.100Z info: POST /api/getBalance
+2024-05-22T21:01:01.160Z info: Received API Key:
+2024-05-22T21:01:01.170Z info: Expected API Key:
+2024-05-22T21:01:01.280Z info: GET /dark-themed-wallpaper.webp
+2024-05-22T21:02:06.206Z info: API_KEY from .env:
+2024-05-22T21:02:06.218Z info: TELEGRAM_BOT_API_KEY from .env:
+2024-05-22T21:02:06.269Z info: Server running on port 3000
+2024-05-22T21:02:22.107Z info: GET /index.html
+2024-05-22T21:02:22.218Z info: GET /style.css
+2024-05-22T21:02:22.228Z info: GET /app.js
+2024-05-22T21:02:25.748Z info: POST /api/getBalance
+2024-05-22T21:02:25.813Z info: Received API Key:
+2024-05-22T21:02:25.835Z info: Expected API Key:
+2024-05-22T21:02:25.912Z info: GET /dark-themed-wallpaper.webp
+2024-05-22T21:09:38.184Z info: API_KEY from .env:
+2024-05-22T21:09:38.192Z info: TELEGRAM_BOT_API_KEY from .env:
+2024-05-22T21:09:38.217Z info: Server running on port 3000
+2024-05-22T21:09:44.331Z info: GET /index.html
+2024-05-22T21:09:44.438Z info: GET /style.css
+2024-05-22T21:09:44.444Z info: GET /app.js
+2024-05-22T21:09:47.778Z info: POST /api/getBalance
+2024-05-22T21:09:47.883Z info: Received API Key:
+2024-05-22T21:09:48.006Z info: Expected API Key:
+2024-05-22T21:09:48.037Z info: Getting balance for user user123
+2024-05-22T21:09:48.101Z info: GET /dark-themed-wallpaper.webp
+2024-05-22T21:14:42.120Z info: GET /index.html
+2024-05-22T21:14:42.180Z info: GET /style.css
+2024-05-22T21:14:42.184Z info: GET /app.js
+2024-05-22T21:14:45.045Z info: POST /api/getBalance
+2024-05-22T21:14:45.051Z info: Received API Key:
+2024-05-22T21:14:45.052Z info: Expected API Key:
+2024-05-22T21:14:45.054Z info: Getting balance for user user123
+2024-05-22T21:14:45.231Z info: GET /dark-themed-wallpaper.webp
+2024-05-22T21:16:36.913Z info: API_KEY from .env:
+2024-05-22T21:16:36.926Z info: TELEGRAM_BOT_API_KEY from .env:
+2024-05-22T21:16:36.965Z info: Server running on port 3000
+2024-05-22T21:16:40.375Z info: GET /index.html
+2024-05-22T21:16:40.681Z info: GET /style.css
+2024-05-22T21:16:40.730Z info: GET /app.js
+2024-05-22T21:16:44.093Z info: POST /api/getBalance
+2024-05-22T21:16:44.162Z info: Received API Key:
+2024-05-22T21:16:44.174Z info: Expected API Key:
+2024-05-22T21:16:44.179Z info: Getting balance for user user123
+2024-05-22T21:16:44.400Z info: GET /dark-themed-wallpaper.webp
+2024-05-22T21:31:10.569Z info: POST /api/mineSpice
+2024-05-22T21:31:10.572Z info: Received API Key:
+2024-05-22T21:31:10.573Z info: Expected API Key:
+2024-05-22T21:31:10.573Z info: User user123 mining SPICE
+2024-05-22T21:45:34.566Z info: POST /api/mineSpice
+2024-05-22T21:45:34.568Z info: Received API Key:
+2024-05-22T21:45:34.569Z info: Expected API Key:
+2024-05-22T21:45:34.569Z info: User user123 mining SPICE
+2024-05-22T21:59:58.553Z info: POST /api/mineSpice
+2024-05-22T21:59:58.555Z info: Received API Key:
+2024-05-22T21:59:58.557Z info: Expected API Key:
+2024-05-22T21:59:58.557Z info: User user123 mining SPICE
+2024-05-22T22:14:22.556Z info: POST /api/mineSpice
+2024-05-22T22:14:22.559Z info: Received API Key:
+2024-05-22T22:14:22.560Z info: Expected API Key:
+2024-05-22T22:14:22.561Z info: User user123 mining SPICE
+2024-05-22T22:28:45.995Z info: POST /api/mineSpice
+2024-05-22T22:28:46.002Z info: Received API Key:
+2024-05-22T22:28:46.005Z info: Expected API Key:
+2024-05-22T22:28:46.008Z info: User user123 mining SPICE
+2024-05-22T22:51:42.296Z info: Server running on port 3000
+2024-05-22T22:51:56.270Z info: GET /index.html
+2024-05-22T22:51:56.369Z info: GET /style.css
+2024-05-22T22:51:56.375Z info: GET /app.js
+2024-05-22T22:51:59.967Z info: GET /dark-themed-wallpaper.webp
+2024-05-22T22:59:01.950Z info: Server running on port 3000
+2024-05-22T22:59:08.934Z info: GET /index.html
+2024-05-22T22:59:09.027Z info: GET /style.css
+2024-05-22T22:59:09.036Z info: GET /app.js
+2024-05-22T22:59:11.729Z info: GET /dark-themed-wallpaper.webp
+2024-05-23T00:00:32.691Z info: Server running on port 3000
+2024-05-23T00:06:03.142Z info: GET /index.html
+2024-05-23T00:06:03.242Z info: GET /style.css
+2024-05-23T00:06:03.249Z info: GET /app.js
+2024-05-23T00:06:06.206Z info: GET /dark-themed-wallpaper.webp
+2024-05-23T00:14:04.997Z info: Server running on port 3000
+2024-05-23T00:14:11.956Z info: GET /index.html
+2024-05-23T00:14:12.041Z info: GET /style.css
+2024-05-23T00:14:14.928Z info: GET /app.js
+2024-05-23T00:14:15.460Z info: GET /dark-themed-wallpaper.webp
+2024-05-23T10:15:01.110Z info: Server running on port 3000
+2024-05-23T10:16:09.935Z info: GET /index.html
+2024-05-23T10:16:10.347Z info: GET /style.css
+2024-05-23T10:16:13.114Z info: GET /app.js
+2024-05-23T10:16:13.268Z info: GET /light-themed-wallpaper.webp
+2024-05-23T10:50:45.043Z info: Server running on port 3000
+2024-05-23T10:50:50.861Z info: GET /index.html
+2024-05-23T10:50:50.949Z info: GET /style.css
+2024-05-23T10:50:50.957Z info: GET /app.js
+2024-05-23T10:50:53.582Z info: GET /light-themed-wallpaper.webp
+2024-05-23T10:51:30.290Z info: Server running on port 3000
+2024-05-23T10:51:34.420Z info: GET /index.html
+2024-05-23T10:51:34.507Z info: GET /style.css
+2024-05-23T10:51:34.515Z info: GET /app.js
+2024-05-23T10:51:37.070Z info: GET /light-themed-wallpaper.webp
+2024-05-23T15:08:50.415Z info: Server running on port 3000
+2024-05-23T15:08:56.654Z info: GET /index.html
+2024-05-23T15:08:56.741Z info: GET /style.css
+2024-05-23T15:08:56.753Z info: GET /app.js
+2024-05-23T15:08:59.465Z info: GET /light-themed-wallpaper.webp
+2024-05-23T15:18:13.650Z info: Server running on port 3000
+2024-05-23T15:18:26.101Z info: GET /index.html
+2024-05-23T15:18:26.179Z info: GET /style.css
+2024-05-23T15:18:26.191Z info: GET /app.js
+2024-05-23T15:18:29.002Z info: GET /light-themed-wallpaper.webp
+2024-05-23T15:19:06.487Z info: GET /index.html
+2024-05-23T15:19:06.568Z info: GET /style.css
+2024-05-23T15:19:06.587Z info: GET /app.js
+2024-05-23T15:19:09.433Z info: GET /light-themed-wallpaper.webp
+2024-05-23T15:33:36.007Z info: GET /index.html
+2024-05-23T15:33:36.112Z info: GET /style.css
+2024-05-23T15:33:36.117Z info: GET /app.js
+2024-05-23T15:33:38.714Z info: GET /light-themed-wallpaper.webp
+2024-07-07T17:35:48.794Z info: Server running on port 3000
+2024-07-07T17:39:05.579Z info: GET /index.html
+2024-07-07T17:39:05.861Z info: GET /style.css
+2024-07-07T17:39:05.868Z info: GET /app.js
+2024-07-07T17:39:07.835Z info: GET /dark-themed-wallpaper.webp
+2024-07-07T17:39:07.879Z info: GET /favicon.ico
+2024-07-07T17:52:00.654Z info: Server running on port 3000
+2024-07-07T17:52:09.344Z info: GET /index.html
+2024-07-07T17:52:09.435Z info: GET /style.css
+2024-07-07T17:52:09.455Z info: GET /app.js
+2024-07-07T17:52:10.825Z info: GET /dark-themed-wallpaper.webp
+2024-07-07T18:20:23.028Z info: GET /index.html
+2024-07-07T18:20:23.092Z info: GET /style.css
+2024-07-07T18:20:23.105Z info: GET /mining_panel.png
+2024-07-07T18:20:24.579Z info: GET /app.js
+2024-07-07T18:20:24.717Z info: GET /dark-themed-wallpaper.webp
+2024-07-30T19:44:04.308Z info: Server running on port 3000
+2024-07-30T19:44:47.005Z info: GET /
