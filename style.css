@@ -1,178 +1,140 @@
-* General body and html styles */
-body, html {
+body {
     margin: 0;
-    padding: 0;
-    height: 100%;
-    width: 100%;
-    background: url('default-background.webp') no-repeat center center fixed; /* Default background */
+    font-family: 'Arial', sans-serif;
     background-size: cover;
+    background-position: center;
+    color: #fff;
     transition: background-image 0.5s ease-in-out;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font */
 }
 
-/* Style for the hero section and background */
 .hero {
-    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    color: white;
+    height: 100vh;
     text-align: center;
-    background: rgba(0, 0, 0, 0.5); /* Slight dark overlay */
 }
 
-/* Style for navigation bar */
-.navbar {
-    position: fixed; /* Fixed to stay on top while scrolling */
-    top: 0;
-    width: 100%;
-    display: flex;
-    justify-content: space-around; 
-    padding: 20px 0;
-    background: rgba(0, 0, 0, 0.8); /* Darker background for better legibility */
-    backdrop-filter: blur(5px); /* Blur effect for modern glassmorphism style */
-}
-
-/* Style for navigation buttons */
-.nav-button {
-    padding: 10px 20px;
-    margin: 0 10px;
-    color: white;
-    background-color: transparent;
-    border: 2px solid white;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out; /* Smooth transition for all properties */
-}
-
-.nav-button:hover, .nav-button:focus {
-    background-color: #ff5722; /* Bright color for interactivity */
+.mining-panel {
+    position: relative;
+    text-align: center;
     color: #fff;
-    transform: scale(1.05); /* Scale effect for feedback */
-    border-color: #ff5722;
+    max-width: 1320px; 
+    margin: auto;
 }
 
-/* Title styling */
-.title {
-    font-size: 4rem;
-    margin-bottom: 20px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Text shadow for depth */
+.mining-image {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 25%);
+    width: 60%;
+    height: auto;
+    display: block;
+        
 }
 
-/* Responsive styles */
-@media (max-width: 600px) {
-    .navbar {
-        flex-direction: column;
-    }
-
-    .nav-button {
-        padding: 10px 20px;
-        width: 90%;
-        text-align: center;
-        margin-bottom: 10px; /* Add space between buttons */
-    }
-
-    .title {
-        font-size: 2.5rem;
-    }
-}
-
-/* Wallet and Mining page content styling */
-.page-content {
-    z-index: 10;
+.panel-content {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 90%;
-    max-width: 600px;
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.8); /* Light background for readability */
-    border-radius: 8px;
-    text-align: center;
-    color: #333; /* Dark text for contrast */
-    font-size: 18px;
-    display: none; /* Hidden by default */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-/* Wallet image style */
-.wallet-image {
-    max-width: 90%;
-    height: auto;
+#progress-container {
+    width: 60%;
+    background: #444; /* Pridanie pozadia na lepšie viditeľnosť */
     border-radius: 5px;
-}
-
-/* Style for the 'Claim' button */
-#claim-spice {
-    padding: 10px 20px;
-    margin-top: 10px;
-    color: white;
-    background-color: #af894c; /* Material green for a friendly action color */
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-#claim-spice:disabled {
-    background-color: #a9a9a9;
-    cursor: not-allowed;
-}
-
-#claim-spice:hover:enabled {
-    background-color: #b46d11;
-    transform: scale(1.05);
-}
-
-/* Mining progress bar styles */
-#mining-progress-bar {
-    width: 0%;
+    overflow: hidden;
     height: 20px;
-    background-color: #af7f4c;
-    border-radius: 5px;
-    transition: width 1s ease-in-out;
+    margin: 20px auto 0;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
-/* Close button styling */
-.close-button {
-    padding: 5px 10px;
-    font-size: 12px;
-    margin-top: 20px;
+#progress-bar {
+    width: 0;
+    height: 100%;
+    background: gold;
+    transition: width 1s;
+}
+
+.panel-btn {
+    font-size: 16px;
     color: white;
-    background-color: #f44336; /* Material red for cautionary actions */
+    cursor: pointer;
+    transition: text-shadow 0.3s ease;
+    position: absolute;
+}
+
+.panel-btn:hover {
+    text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 30px #ff0000;
+}
+
+.claim-btn {
+    bottom: 15%; 
+    left: 22%; 
+    transform: translate(50%, -50%);
+}
+
+.close-btn { 
+    right: 30%; 
+    transform: translate(50%, -50%);
+}
+
+.hidden {
+    display: none;
+}
+
+.nav-button, .btn {
+    background: rgba(255, 255, 255, 0.8);
     border: none;
+    padding: 10px;
+    margin: 5px;
     border-radius: 5px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: background 0.3s, transform 0.2s;
+    color: #333;
 }
 
-.close-button:hover {
-    background-color: #dcbeaa;
+.nav-button:hover, .btn:hover {
+    background: rgba(255, 255, 255, 1);
     transform: scale(1.05);
 }
-/* Loading indicator styles */
-.loading-indicator {
-    display: block;
-    margin: 20px auto;
-    border: 5px solid #f3f3f3; /* Light grey */
-    border-top: 5px solid #db9534; /* Blue */
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    animation: spin 2s linear infinite;
+
+.nav-button:active, .btn:active {
+    background: #ccc;
+    transform: scale(0.95);
 }
 
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
 }
 
-.claim-message {
-    color: #af874c; /* Material green for successful message */
-    text-align: center;
-    margin-top: 20px;
-    display: none;
+.input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.message {
+    margin: 10px 0;
+    color: #333;
+}
+
+.g-recaptcha {
+    margin: 10px 0;
 }

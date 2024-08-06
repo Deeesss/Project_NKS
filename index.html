@@ -3,51 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEKOS Game</title>
+    <title>NEKOS Mining</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
-    <!-- Main Hero Section -->
-    <div class="hero" id="hero">
-        <nav class="navbar">
-            <button class="nav-button" id="home-button">Domů</button>
-            <button class="nav-button" id="about-button">O Hře</button>
-            <button class="nav-button" id="game-button">Hra</button>
-            <button class="nav-button" id="wallet-button">Peněženka</button>
-            <button class="nav-button" id="mining-button">Těžba</button>
-            <button class="nav-button" id="marketplace-button">Tržiště</button>
-            <button class="nav-button" id="neko-button">Token Nekocubes</button>
-            <button class="nav-button" id="change-background">Změnit Pozadí</button>
-        </nav>
-        <h1 class="title">NEKOS Game</h1>
+    <div class="hero page" id="hero">
+        <button id="start-button" class="btn">Start Mining</button>
     </div>
     
-    <!-- Wallet Section, hidden by default -->
-    <section id="wallet-page" class="page-content hidden">
-        <h2>Vaše Peněženka</h2>
-        <div id="crypto-prices-wallet">
-            <p>BTC Cena: <span id="btc-price-wallet">Načítání...</span></p>
-            <p>ETH Cena: <span id="eth-price-wallet">Načítání...</span></p>
-            <p>COSMOS Cena: <span id="cosmos-price-wallet">Načítání...</span></p>
+    <div id="mining-card" class="hidden page">
+        <div class="mining-panel">
+            <img src="onewaay2.png" alt="Mining Panel" class="mining-image">
+            <span class="panel-btn claim-btn" id="claim-spice-btn">CLAIM SPICE</span>
+            <span class="panel-btn close-btn" id="close-mining-btn">CLOSE MINING</span>
+            <div class="panel-content">
+                <div id="progress-container">
+                    <div id="progress-bar"></div>
+                </div>
+                <div id="spice-balance">0.00</div>
+            </div>
         </div>
-        <img src="wallet.webp" alt="Obrázek Peněženky" class="wallet-image"/>
-        <button class="nav-button close-button" id="close-wallet">Zavřít Peněženku</button>
-    </section>
-
-   <!-- Mining Section, hidden by default -->
-<div id="mining-page" class="page-content">
-    <h2>Mining SPICE</h2>
-    <div id="mining-progress">
-        <div id="mining-progress-bar"></div>
     </div>
-    <p>SPICE Balance: <span id="spice-balance">0</span></p>
-    <button id="claim-spice">Claim SPICE</button>
-    <!-- Loading Indicator and Claim Message -->
-    <div id="claim-message" class="claim-message"></div>
-    <div id="loading-indicator" class="loading-indicator" style="display:none;"></div>
-    <!-- End of Loading Indicator and Claim Message -->
-    <button class="nav-button close-button" id="close-mining">Close Mining</button>
-</div>
+
+    <div id="captcha-card" class="hidden page">
+        <h2 class="card-title">CAPTCHA Verification</h2>
+        <div class="card-info">
+            <p id="captcha-container"></p>
+            <input type="text" id="captcha-input" class="input" placeholder="Your answer">
+            <button id="verify-captcha" class="btn">Verify</button>
+            <p id="captcha-message" class="message"></p>
+        </div>
+        <button class="btn-close" id="close-captcha">Close</button>
+    </div>
+
+    <div class="bottom-nav">
+        <button class="nav-button" id="home-button">Home</button>
+        <button class="nav-button" id="missions-button">Missions</button>
+        <button class="nav-button" id="about-button">About</button>
+        <button class="nav-button" id="wallet-button">Wallet</button>
+        <button class="nav-button" id="mining-button">Mining</button>
+    </div>
 
     <script src="app.js" defer></script>
 </body>

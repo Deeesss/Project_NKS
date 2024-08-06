@@ -1,137 +1,193 @@
-// Path to the background images
-const backgrounds = ['First-design.png', 'Second-design.webp', 'Third-design.webp', 'Fourth-design.webp'];
-let currentBackgroundIndex = 0; // Index of the current background
-let spiceBalance = 0; // User's SPICE balance
-let spiceAccumulated = 0; // Accumulated SPICE awaiting claim
-let miningInterval; // Interval for mining simulation
+const dayBackground = 'light-themed-wallpaper.webp';
+const nightBackground = 'dark-themed-wallpaper.webp';
 
-// Load saved SPICE balances from localStorage
-const loadSavedBalances = () => {
-    spiceBalance = parseFloat(localStorage.getItem('spiceBalance')) || 0;
-    spiceAccumulated = parseFloat(localStorage.getItem('spiceAccumulated')) || 0;
-    updateSpiceDisplay();
-};
+let spiceBalance = 0;
+let spiceAccumulated = 0;
+let miningInterval;
+let userId = 'user123'; // Placeholder pre užívateľské ID
 
-// Update the display of SPICE balance and progress bar
-const updateSpiceDisplay = () => {
-    const spiceDisplayElement = document.getElementById('spice-balance');
-    const miningProgressBar = document.getElementById('mining-progress-bar');
-    if (spiceDisplayElement && miningProgressBar) {
-        const progressPercentage = Math.min((spiceAccumulated / 100) * 100, 100);
-        spiceDisplayElement.textContent = spiceBalance.toFixed(2);
-        miningProgressBar.style.width = `${progressPercentage}%`;
-        document.getElementById('claim-spice').disabled = spiceAccumulated < 20;
+const apiKey = 'eN7Kvx,|CST£P+7sd4w|bKj+B<H95b+w|Z9bq%N5-i8by'; // Použitie API kľúča
+
+const loadSavedBalances = async () => {
+    try {
+        const recaptchaToken = grecaptcha.getResponse();
+        const response = await fetch('/api/getBalance', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'x-api-key': apiKey
+            },
+            body: JSON.stringify({ userId, recaptchaToken }),
+        });
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        spiceBalance = data.balance || 0;
+        spiceAccumulated = data.accumulated || 0;
+        console.log('Loaded balances:', spiceBalance, spiceAccumulated); // Log
+        updateSpiceDisplay();
+    } catch (error) {
+        console.error('Error loading balances:', error);
     }
 };
 
-// Save the current SPICE balances to localStorage
-const saveBalances = () => {
-    localStorage.setItem('spiceBalance', spiceBalance.toString());
-    localStorage.setItem('spiceAccumulated', spiceAccumulated.toString());
+const updateSpiceDisplay = () => {
+    const spiceDisplayElement = document.getElementById('spice-balance');
+    const progressBar = document.getElementById('progress-bar');
+    console.log('Updating spice display:', spiceDisplayElement, progressBar); // Log
+    if (spiceDisplayElement && progressBar) {
+        const progressPercentage = Math.min((spiceAccumulated / 100) * 100, 100);
+        console.log('Progress percentage:', progressPercentage); // Log
+        spiceDisplayElement.textContent = (spiceBalance || 0).toFixed(2); 
+        progressBar.style.width = `${progressPercentage}%`;
+        console.log('Progress bar width:', progressBar.style.width); // Log
+        document.getElementById('claim-spice-btn').style.visibility = spiceAccumulated < 20 ? 'hidden' : 'visible';
+    }
 };
 
-// Function to claim SPICE tokens
-const claimSpiceTokens = () => {
-    const claimButton = document.getElementById('claim-spice');
+const claimSpiceTokens = async () => {
+    const claimButton = document.getElementById('claim-spice-btn');
     const loadingIndicator = document.getElementById('loading-indicator');
     const claimMessage = document.getElementById('claim-message');
 
     if (spiceAccumulated >= 20) {
-        claimButton.disabled = true;
-        loadingIndicator.style.display = 'block'; // Show loading indicator
+        claimButton.style.visibility = 'hidden';
+        loadingIndicator.style.display = 'block';
 
-        // Simulate the claim process with a delay
-        setTimeout(() => {
-            spiceBalance += spiceAccumulated;
+        try {
+            const response = await fetch('/api/claimSpice', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-api-key': apiKey
+                },
+                body: JSON.stringify({ userId, amount: spiceAccumulated }),
+            });
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const data = await response.json();
+            spiceBalance = data.newBalance || 0;
             spiceAccumulated = 0;
             updateSpiceDisplay();
-            saveBalances();
 
-            loadingIndicator.style.display = 'none'; // Hide loading indicator
-            claimMessage.style.display = 'block'; // Show success message
-            claimMessage.textContent = "You've successfully claimed your SPICE tokens!";
+            loadingIndicator.style.display = 'none';
+            claimMessage.style.display = 'block';
+            claimMessage.textContent = "Úspěšně ste nárokovali vaše SPICE tokeny!";
 
-            // Hide the message after some time and enable the claim button
             setTimeout(() => {
                 claimMessage.style.display = 'none';
-                claimButton.disabled = false;
+                claimButton.style.visibility = 'visible';
             }, 5000);
-
-        }, 2000); // Time in milliseconds for the loading effect
+        } catch (error) {
+            console.error('Error claiming spice:', error);
+            loadingIndicator.style.display = 'none';
+            claimMessage.style.display = 'block';
+            claimMessage.textContent = "Chyba pri nárokovaní SPICE tokenov!";
+            setTimeout(() => {
+                claimMessage.style.display = 'none';
+                claimButton.style.visibility = 'visible';
+            }, 5000);
+        }
     }
 };
 
-// Function to start mining SPICE tokens
-const startSpiceMining = () => {
+const startSpiceMining = async () => {
     clearInterval(miningInterval);
-    miningInterval = setInterval(() => {
-        spiceAccumulated += (100 / 60);
-        if (spiceAccumulated > 100) spiceAccumulated = 100;
-        updateSpiceDisplay();
-    }, 1000);
+    miningInterval = setInterval(async () => {
+        try {
+            const response = await fetch('/api/mineSpice', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-api-key': apiKey
+                },
+                body: JSON.stringify({ userId }),
+            });
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const data = await response.json();
+            spiceAccumulated = data.accumulated || 0;
+            console.log('Mining accumulated:', spiceAccumulated); // Log
+            updateSpiceDisplay();
+        } catch (error) {
+            console.error('Error mining spice:', error);
+        }
+    }, 60000); // Upravený interval na testovacie účely (1 minúta)
 };
 
-// Fetch cryptocurrency prices - placeholder for future implementation
-const fetchCryptoPrices = () => {
-    // Placeholder for fetching crypto prices functionality
+const setBackgroundImage = () => {
+    const hour = new Date().getHours();
+    const body = document.body;
+    if (hour >= 6 && hour < 18) {
+        body.style.backgroundImage = `url('${dayBackground}')`;
+    } else {
+        body.style.backgroundImage = `url('${nightBackground}')`;
+    }
 };
 
-// Function to switch background images
-const switchBackground = () => {
-    currentBackgroundIndex = (currentBackgroundIndex + 1) % backgrounds.length;
-    document.body.style.backgroundImage = `url('${backgrounds[currentBackgroundIndex]}')`;
+const showPage = (pageId) => {
+    document.querySelectorAll('.page').forEach(page => {
+        page.classList.add('hidden');
+    });
+    document.getElementById(pageId).classList.remove('hidden');
 };
 
-// Display Wallet section
-const showWallet = () => {
-    clearInterval(miningInterval);
-    document.getElementById('wallet-page').style.display = 'block';
-    document.getElementById('mining-page').style.display = 'none';
-    document.getElementById('hero').style.display = 'none';
-    document.body.style.backgroundImage = "url('wallet.webp')";
-};
-
-// Display Mining section
-const showMining = () => {
-    clearInterval(miningInterval);
-    document.getElementById('mining-page').style.display = 'block';
-    document.getElementById('wallet-page').style.display = 'none';
-    document.getElementById('hero').style.display = 'none';
-    startSpiceMining();
-};
-
-// Close Wallet or Mining section
-const closePageSection = () => {
-    document.getElementById('wallet-page').style.display = 'none';
-    document.getElementById('mining-page').style.display = 'none';
-    document.getElementById('hero').style.display = 'flex';
-    switchBackground();
-};
-
-// Show the Home section
-const showHome = () => {
-    clearInterval(miningInterval);
-    document.getElementById('hero').style.display = 'flex';
-    document.getElementById('wallet-page').style.display = 'none';
-    document.getElementById('mining-page').style.display = 'none';
-    document.body.style.backgroundImage = '';
-    startSpiceMining();
-};
-
-// Set up event listeners for UI elements
 const setupEventListeners = () => {
-    document.getElementById('home-button').addEventListener('click', showHome);
-    document.getElementById('wallet-button').addEventListener('click', showWallet);
-    document.getElementById('mining-button').addEventListener('click', showMining);
-    document.getElementById('close-wallet').addEventListener('click', closePageSection);
-    document.getElementById('close-mining').addEventListener('click', closePageSection);
-    document.getElementById('claim-spice').addEventListener('click', claimSpiceTokens);
-    document.getElementById('change-background').addEventListener('click', switchBackground);
+    document.getElementById('start-button').addEventListener('click', () => {
+        if (!localStorage.getItem('captchaVerified')) {
+            showPage('captcha-card');
+            loadCaptcha();
+        } else {
+            showPage('mining-card');
+            startSpiceMining();
+        }
+    });
+
+    document.getElementById('close-mining-btn').addEventListener('click', () => {
+        showPage('hero');
+        clearInterval(miningInterval);
+    });
+
+    document.getElementById('claim-spice-btn').addEventListener('click', claimSpiceTokens);
+    document.getElementById('verify-captcha').addEventListener('click', verifyCaptcha);
 };
 
-// Initialize the application on DOMContentLoaded
+const loadCaptcha = () => {
+    const captchaContainer = document.getElementById('captcha-container');
+    const captchaQuestion = generateCaptcha();
+    captchaContainer.textContent = captchaQuestion.question;
+};
+
+let currentCaptchaAnswer;
+
+const generateCaptcha = () => {
+    const num1 = Math.floor(Math.random() * 10) + 1;
+    const num2 = Math.floor(Math.random() * 10) + 1;
+    const question = `Kolik je ${num1} + ${num2}?`;
+    currentCaptchaAnswer = num1 + num2;
+    return { question };
+};
+
+const verifyCaptcha = () => {
+    const userAnswer = parseInt(document.getElementById('captcha-input').value, 10);
+    const captchaMessage = document.getElementById('captcha-message');
+    if (userAnswer === currentCaptchaAnswer) {
+        captchaMessage.textContent = 'CAPTCHA úspěšně ověřena!';
+        captchaMessage.style.color = 'green';
+        localStorage.setItem('captchaVerified', 'true');
+        showPage('mining-card');
+        startSpiceMining();
+    } else {
+        captchaMessage.textContent = 'Nesprávná CAPTCHA, zkuste to znovu.';
+        captchaMessage.style.color = 'red';
+    }
+};
+
 document.addEventListener('DOMContentLoaded', () => {
-    loadSavedBalances();
+    setBackgroundImage();
     setupEventListeners();
-    startSpiceMining();
+    showPage('hero');
 });
