@@ -16,6 +16,14 @@ body {
 }
 
 .mining-panel {
+    margin-left: 20%;
+    /* top: 0%; */
+    width: 60%;
+    font-family: 'Arial', sans-serif;
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+
     position: relative;
     text-align: center;
     color: #fff;
@@ -47,7 +55,7 @@ body {
 }
 
 #progress-container {
-    width: 60%;
+    width: 55%;
     background: #444; /* Pridanie pozadia na lepšie viditeľnosť */
     border-radius: 5px;
     overflow: hidden;
@@ -68,6 +76,8 @@ body {
 
 .panel-btn {
     font-size: 16px;
+    margin-right: 20px;
+
     color: white;
     cursor: pointer;
     transition: text-shadow 0.3s ease;
