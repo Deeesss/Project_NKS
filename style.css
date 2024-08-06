@@ -14,32 +14,22 @@ body {
     height: 100vh;
     text-align: center;
 }
-
-.mining-panel {
-    margin-left: 20%;
-    /* top: 0%; */
-    width: 60%;
-    font-family: 'Arial', sans-serif;
-    background-size: cover;
-    background-position: center;
-    color: #fff;
-
-    position: relative;
-    text-align: center;
-    color: #fff;
-    max-width: 1320px; 
-    margin: auto;
-}
-
 .mining-image {
-    position: relative;
+    position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, 25%);
-    width: 60%;
+    transform: translate(-50%, -50%);
+    width: 100%;
     height: auto;
     display: block;
-        
+}
+
+.mining-panel {
+    width: 60%;
+    position: relative;
+    margin: auto;
+    overflow: hidden; /* Ensure the image doesn't overflow the container */
+    height: 400px; /* or any specific height you desire */
 }
 
 .panel-content {
@@ -70,7 +60,7 @@ body {
 #progress-bar {
     width: 0;
     height: 100%;
-    background: gold;
+    background: rgb(255, 174, 0);
     transition: width 1s;
 }
 
@@ -90,7 +80,6 @@ body {
 
 .claim-btn {
     bottom: 15%; 
-    left: 22%; 
     transform: translate(50%, -50%);
 }
 
